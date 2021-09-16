@@ -7,6 +7,7 @@ import numpy as np
 import lib.midi_processing
 from midi2audio import FluidSynth
 from torch.utils.data import Dataset
+from IPython.display import Audio, display, FileLink, HTML
 
 
 id2genre = {0:'classic', 1:'jazz', 2:'calm', 3:'pop'}
