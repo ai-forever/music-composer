@@ -65,7 +65,7 @@ def generate(model, primer, target_seq_length=1024, temperature=1.0, topk=40, to
     generated[..., :N] = primer.to(device)
     
     if use_rp:
-        RP_processor = DynamicRepetitionPenaltyProcessor(B, penalty=rp_penalty, restore_speed=rp_restore_speed)
+        RP_processor = DynamicRepetitionPenaltyProcessor(B, penalty=rp_penalty, restore_speed=rp_restore_speed, device=device)
     whitelist_mask = make_whitelist_mask()
     
     model.eval()
@@ -174,7 +174,7 @@ class DynamicRepetitionPenaltyProcessor:
         the number inversed to the number of seconds needs to fully restore probability from 0 to 1.
         for restore_speed equal to 1.0 we need 1.0 sec to restore, for 2.0 - 0.5 sec and so on.
     """
-    def __init__(self, bs, penalty=0.3, restore_speed=1.0):
+    def __init__(self, bs, penalty=0.3, restore_speed=1.0, device):
         self.bs = bs
         self.penalty = penalty
         self.restore_speed = restore_speed
