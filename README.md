@@ -2,10 +2,10 @@
 This repository is dedicated to synthesizing symbolic music in MIDI format using the Music Transformer model (103M paramaters). In the repository, you can find a demo notebook for generating on a GPU Google Colab instance, data preparation and model training code.
 
 ## Table of Contents
-1. [Demo notebook] (#demo-notebook)
-2. [Model code] (#model-code)
-3. [Data] (#data)
-4. [Training] (#training)
+1. [Demo notebook](#demo-notebook)
+2. [Model code](#model-code)
+3. [Data](#data)
+4. [Training](#training)
 
 
 ## Demo notebook
