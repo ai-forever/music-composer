@@ -1,5 +1,5 @@
 # Music Composer
-This repository is dedicated to synthesizing symbolic music in MIDI format using the Music Transformer model. In the repository, you can find a demo laptop for generating on a GPU Google Colab instance, data preparation and model training code.
+This repository is dedicated to synthesizing symbolic music in MIDI format using the Music Transformer model (103M paramaters). In the repository, you can find a demo notebook for generating on a GPU Google Colab instance, data preparation and model training code.
 
 ## Table of Contents
 1. [Demo notebook] (# demo-laptop)
@@ -12,7 +12,7 @@ This repository is dedicated to synthesizing symbolic music in MIDI format using
 
 Jupyter Notebook can be opened on Colab by clicking on the button:
 
-[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sberbank-ai/music-composer/blob/main/src/Music_Composer_Demo_Colab.ipynb)
+[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sberbank-ai/music-composer/blob/main/src/Music_Composer_Demo_Colab.ipynb)]
 
 It unrolls the environment, loads the code and weights for synthesis. Generation parameters are set in the generation control panel, and you can listen and download the results in the last cell.
 
