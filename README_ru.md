@@ -12,7 +12,7 @@
 
 Jupyter Notebook можно открыть на Colab нажав на кнопку:
 
-[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sberbank-ai/music-composer/blob/main/src/Music_Composer_Demo_Colab.ipynb)
+[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sberbank-ai/music-composer/blob/main/src/Music_Composer_Demo_Colab_ru.ipynb)
 
 В нем производится разворачивание окружения, подгрузка кода и весов для синтеза. Параметры генерации задаются в панели управления генерацией, а прослушать и скачать результаты можно в последней ячейке. 
 
