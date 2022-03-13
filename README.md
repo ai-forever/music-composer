@@ -1,49 +1,49 @@
 # Music Composer
-Данный репозиторий посвящен синтезу символьной музыки в MIDI формате с помощью модели Music Transformer. В репозитории можно найти демонстрационный ноутбук для генерации на GPU инстансе Google Colab, код подготовки данных и обучения модели.
+This repository is dedicated to synthesizing symbolic music in MIDI format using the Music Transformer model (103M paramaters). In the repository, you can find a demo notebook for generating on a GPU Google Colab instance, data preparation and model training code.
 
-## Оглавление
-1. [Демонстрационный ноутбук](#демонстрационный-ноутбук)
-2. [Код модели](#код-модели)
-3. [Данные](#данные)
-4. [Обучение](#обучение)
+## Table of Contents
+1. [Demo notebook](#demo-notebook)
+2. [Model code](#model-code)
+3. [Data](#data)
+4. [Training](#training)
 
 
-## Демонстрационный ноутбук
+## Demo notebook
 
-Jupyter Notebook можно открыть на Colab нажав на кнопку:
+Jupyter Notebook can be opened on Colab by clicking on the button:
 
-[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sberbank-ai/music-composer/blob/main/src/Music_Composer_Demo_Colab.ipynb)
+[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sberbank-ai/music-composer/blob/main/src/Music_Composer_Demo_Colab_en.ipynb)
 
-В нем производится разворачивание окружения, подгрузка кода и весов для синтеза. Параметры генерации задаются в панели управления генерацией, а прослушать и скачать результаты можно в последней ячейке. 
+It unrolls the environment, loads the code and weights for synthesis. Generation parameters are set in the generation control panel, and you can listen and download the results in the last cell.
 
-❗При запуске убедитесь в том, что используется GPU инстанс. Можно синтезировать и на CPU, но это занимает ощутимо больше времени.
+❗ Make sure the GPU instance is being used at startup. It is possible to synthesize on a CPU, but it takes significantly more time.
 
-## Код модели
-Расположен в [папке](https://github.com/sberbank-ai/music-composer/tree/main/src/lib/model). 
-Состоит из трех осовных частей:
-- Positional encoding - обычное позиционное кодирование для трансформерных моделей
-- Relative Positional Representation - модуль с реализацией Relative Attention
-- Transformer - сама модель трансформер  
+## Model code
+Located in [folder](https://github.com/sberbank-ai/music-composer/tree/main/src/lib/model). 
+Consists of three main parts:
+- Positional encoding - normal positional encoding for transformer models
+- Relative Positional Representation - a module with the implementation of Relative Attention
+- Transformer - the model itself is a transformer 
 
-Код модели и relative attention взят из [репозитория](https://github.com/gwinndr/MusicTransformer-Pytorch).
+Model code and relative attention taken from [repository](https://github.com/gwinndr/MusicTransformer-Pytorch).
 
-## Данные
-Для демонстрации скрипта энкодинга мы предоставляем несколько MIDI файлов из нашей обучающей выборки. Они находятся в папке src/test_dataset и разбиты по папкам на жанры. В каждой папке по одному файлу для проверки. Запустить подготовку закодированных в event-based формате версий этих файлов можно с помощью команды:
+## Data
+To demonstrate the encoding script, we provide several MIDI files from our training sample. They are located in the src / test_dataset folder and are divided into folders by genre. Each folder contains one file to check. You can start preparing event-based versions of these files using the command:
 ```python encode_dataset.py```
 
-Папка с исходными MIDI и папка для результатов задаются внутри скрипта через переменные `DATA_DIR`, `OUTPUT_DIR`. Файлы датасетов с путями до файлов будут созданы в `DS_FILE_PATH`. Список жанров задается через `GENRES`, а максимальная длина записи в event токенах - `MAX_LEN`.
+The folder with the source MIDI and the folder for the results are set inside the script through the variables `DATA_DIR`,` OUTPUT_DIR`. Dataset files with file paths will be created in `DS_FILE_PATH`. The genre list is specified using `GENRES`, and the maximum record length in event tokens is` MAX_LEN`.
 
-Для демонстрации мы также предоставляем результат работы данной команды в папке encoded_dataset. В нем находятся тензоры с MIDI, переведенными в event-based формат. Их можно загрузить с помощью стандартного `torch.load(file_path)`
-В качестве общедоступных MIDI для обучения можно использовать датасеты:
+For demonstration, we also provide the output of this command in the encoded_dataset folder. It contains tensors with MIDI converted to event-based format. They can be loaded using the standard `torch.load (file_path)`
+Datasets can be used as public MIDI for training:
 [MAESTRO Dataset](https://magenta.tensorflow.org/datasets/maestro)
 [Lakh MIDI Dataset](https://colinraffel.com/projects/lmd/)
 [GiantMIDI-Piano Dataset](https://github.com/bytedance/GiantMIDI-Piano)
 
-Есть еще один способ получения MIDI файлов - транскрибирование волновых файлов с музыкой. В этом может помочь подход наподобие [Onset-frames](https://magenta.tensorflow.org/onsets-frames).
-В качестве музыки для транскрибирования можно использовать например [Free Music Archive](https://github.com/mdeff/fma).  
-❗Для транскрибирования могут потребоваться значительные ресурсы, однако именно это позволит обойти основное ограничение текущих моделей генерации символьной музыки - отсутствие крупных корпусов с нотами.  
-❗ После транскрибирования рекомендуется проанализировать результаты и отфильтровать плохие записи.
-## Обучение
-Скрипт для обучения модели на подготовленных данных можно запустить с помощью:
+There is another way to get MIDI files - transcribing wave files with music. An approach like [Onset-frames] (https://magenta.tensorflow.org/onsets-frames) can help with this.
+As music for transcription, you can use for example [Free Music Archive] (https://github.com/mdeff/fma).
+❗Significant resources may be required for transcribing, but this is exactly what will allow to get around the main limitation of the current models of symbolic music generation - the absence of large corpora with notes.
+❗ After transcription, it is recommended to analyze the results and filter out bad recordings.
+## Training
+A script for training a model on prepared data can be run using:
 ```python train.py```
-Параметры обучения задаются внутри скрипта в переменной params. Позднее в данном разделе будет дано описание каждого из параметров.
+Training parameters are set inside the script in the params variable. A description of each of the parameters will be given later in this section.
