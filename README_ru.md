@@ -12,14 +12,14 @@
 
 Jupyter Notebook можно открыть на Colab нажав на кнопку:
 
-[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sberbank-ai/music-composer/blob/main/src/Music_Composer_Demo_Colab_ru.ipynb)
+[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-forever/music-composer/blob/main/src/Music_Composer_Demo_Colab_ru.ipynb)
 
 В нем производится разворачивание окружения, подгрузка кода и весов для синтеза. Параметры генерации задаются в панели управления генерацией, а прослушать и скачать результаты можно в последней ячейке. 
 
 ❗При запуске убедитесь в том, что используется GPU инстанс. Можно синтезировать и на CPU, но это занимает ощутимо больше времени.
 
 ## Код модели
-Расположен в [папке](https://github.com/sberbank-ai/music-composer/tree/main/src/lib/model). 
+Расположен в [папке](https://github.com/ai-forever/music-composer/tree/main/src/lib/model). 
 Состоит из трех осовных частей:
 - Positional encoding - обычное позиционное кодирование для трансформерных моделей
 - Relative Positional Representation - модуль с реализацией Relative Attention

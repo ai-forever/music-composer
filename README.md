@@ -12,14 +12,14 @@ This repository is dedicated to synthesizing symbolic music in MIDI format using
 
 Jupyter Notebook can be opened on Colab by clicking on the button:
 
-[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sberbank-ai/music-composer/blob/main/src/Music_Composer_Demo_Colab_en.ipynb)
+[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-forever/music-composer/blob/main/src/Music_Composer_Demo_Colab_en.ipynb)
 
 It unrolls the environment, loads the code and weights for synthesis. Generation parameters are set in the generation control panel, and you can listen and download the results in the last cell.
 
 ❗ Make sure the GPU instance is being used at startup. It is possible to synthesize on a CPU, but it takes significantly more time.
 
 ## Model code
-Located in [folder](https://github.com/sberbank-ai/music-composer/tree/main/src/lib/model). 
+Located in [folder](https://github.com/ai-forever/music-composer/tree/main/src/lib/model). 
 Consists of three main parts:
 - Positional encoding - normal positional encoding for transformer models
 - Relative Positional Representation - a module with the implementation of Relative Attention
